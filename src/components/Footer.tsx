@@ -97,7 +97,7 @@ export function Footer({ onOpenCv }: FooterProps) {
             © {new Date().getFullYear()} Huzaifa Bilal. All rights reserved.
           </div>
           <div>
-            <span>Engineered with React, TypeScript & Tailwind CSS</span>
+            <span>Crafted with WordPress, PHP & Custom Plugin Development</span>
           </div>
         </div>
       </div>
