@@ -283,7 +283,7 @@ export const EDUCATION: EducationItem[] = [
     institution: 'University of Sargodha (UOS)',
     location: 'Sargodha, Pakistan',
     period: 'Dec 2022 – Jun 2026',
-    grade: 'CGPA: 3.33 / 4.00 (82.16%)',
+    grade: 'CGPA: 3.32 / 4.00 (82.16%)',
     finalProject: {
       title: 'Auctify – Online Auction Web Application',
       description: 'A full-stack e-commerce auction platform built to facilitate live concurrent bidding, secure user authentication, and seamless inventory management.',

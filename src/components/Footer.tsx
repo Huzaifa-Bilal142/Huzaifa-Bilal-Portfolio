@@ -16,8 +16,12 @@ export function Footer({ onOpenCv }: FooterProps) {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand and identity */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-600 to-amber-700 dark:from-amber-500 dark:to-amber-600 flex items-center justify-center text-white font-bold text-sm shadow-xs">
-              HB
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-amber-500 border-2 border-amber-500/50 shadow-sm shrink-0">
+              <img 
+                src="/public/assets/aistudio/Gemini_Generated_Image_ud0hcnud0hcnud0h_73093024.png" 
+                alt="Huzaifa Bilal" 
+                className="w-full h-full object-cover object-top"
+              />
             </div>
             <div>
               <div className="font-display font-bold text-stone-950 dark:text-white text-base">

@@ -75,8 +75,12 @@ export function Navbar({ onOpenContact, onOpenCv }: NavbarProps) {
           onClick={(e) => { e.preventDefault(); scrollTo('hero'); }}
           className="flex items-center gap-3 group focus:outline-none"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-600 to-amber-700 dark:from-amber-500 dark:to-amber-600 flex items-center justify-center text-white font-bold text-base shadow-sm group-hover:scale-105 transition-transform">
-            HB
+          <div className="w-10 h-10 rounded-xl overflow-hidden bg-amber-500 border-2 border-amber-500/50 shadow-sm group-hover:scale-105 transition-transform shrink-0">
+            <img 
+              src="/public/assets/aistudio/Gemini_Generated_Image_ud0hcnud0hcnud0h_73093024.png" 
+              alt="Huzaifa Bilal" 
+              className="w-full h-full object-cover object-top"
+            />
           </div>
           <div>
             <div className="flex items-center gap-2">

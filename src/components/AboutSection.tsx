@@ -116,7 +116,7 @@ export function AboutSection() {
                 <div className="flex justify-between py-1.5 border-b border-stone-200 dark:border-zinc-800">
                   <span className="text-stone-700 dark:text-zinc-300">Academic Standing</span>
                   <span className="font-mono font-bold text-emerald-800 dark:text-emerald-300">
-                    CGPA: 3.33 / 4.00 (82.16%)
+                    CGPA: 3.32 / 4.00 (82.16%)
                   </span>
                 </div>
                 <div className="flex justify-between py-1.5">
