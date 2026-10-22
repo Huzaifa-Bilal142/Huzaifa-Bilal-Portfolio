@@ -79,7 +79,7 @@ export function Navbar({ onOpenContact, onOpenCv }: NavbarProps) {
             <img 
               src="/public/assets/aistudio/Gemini_Generated_Image_ud0hcnud0hcnud0h_73093024.png" 
               alt="Huzaifa Bilal" 
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-[55%_25%]"
             />
           </div>
           <div>

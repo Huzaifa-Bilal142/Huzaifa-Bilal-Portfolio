@@ -230,7 +230,7 @@ export function Hero({ onExploreProjects, onContactClick, onOpenCv }: HeroProps)
               University Merit
             </div>
             <p className="text-xs text-stone-700 dark:text-zinc-300 font-medium">
-              B.Sc. Software Engineering CGPA 3.33/4.00 at UOS.
+              B.Sc. Software Engineering CGPA 3.32/4.00 at UOS.
             </p>
           </div>
 
