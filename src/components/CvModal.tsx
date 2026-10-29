@@ -181,7 +181,7 @@ export function CvModal({ isOpen, onClose, onOpenContact }: CvModalProps) {
               <div className="flex items-center gap-2 text-stone-800 dark:text-zinc-200 font-medium">
                 <Linkedin className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
                 <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noreferrer" className="hover:underline truncate">
-                  linkedin.com/in/huzaifa-bilal-6409b1417
+                  {PERSONAL_INFO.linkedin.replace(/^https?:\/\//, '')}
                 </a>
               </div>
 
@@ -195,7 +195,7 @@ export function CvModal({ isOpen, onClose, onOpenContact }: CvModalProps) {
               <div className="flex items-center gap-2 text-stone-800 dark:text-zinc-200 font-medium">
                 <Globe className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
                 <a href={PERSONAL_INFO.portfolioUrl} target="_blank" rel="noreferrer" className="hover:underline truncate">
-                  huzaifas-digital-canvas.vercel.app
+                  {PERSONAL_INFO.portfolioUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}
                 </a>
               </div>
             </div>
