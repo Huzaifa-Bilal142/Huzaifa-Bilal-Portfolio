@@ -13,6 +13,7 @@ export const PERSONAL_INFO = {
   githubUrl: 'https://github.com/Huzaifa-Bilal142',
   githubUsername: 'Huzaifa-Bilal142',
   whatsappUrl: 'https://wa.me/923128381941',
+  cvPdfUrl: '/assets/aistudio/Huzaifa_Bilal_CV_73d4b65b.pdf',
 };
 
 export const PROJECTS_DATA: Project[] = [

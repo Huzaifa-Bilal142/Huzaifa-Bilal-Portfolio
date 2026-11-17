@@ -26,7 +26,6 @@ import {
   SKILL_CATEGORIES, 
   PROJECTS_DATA 
 } from '../data/portfolioData';
-import { generateCvPdf } from '../utils/generateCvPdf';
 
 interface CvModalProps {
   isOpen: boolean;
@@ -42,14 +41,30 @@ export function CvModal({ isOpen, onClose, onOpenContact }: CvModalProps) {
 
   const edu = EDUCATION[0];
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     setIsDownloading(true);
     try {
-      generateCvPdf();
+      const response = await fetch(PERSONAL_INFO.cvPdfUrl);
+      if (!response.ok) throw new Error('Failed to fetch CV PDF');
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = 'Huzaifa_Bilal_CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
       setDownloadSuccess(true);
       setTimeout(() => setDownloadSuccess(false), 3000);
     } catch (error) {
-      console.error('Failed to generate PDF:', error);
+      console.error('Failed to download CV PDF:', error);
+      const link = document.createElement('a');
+      link.href = PERSONAL_INFO.cvPdfUrl;
+      link.download = 'Huzaifa_Bilal_CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } finally {
       setIsDownloading(false);
     }
@@ -476,7 +491,7 @@ export function CvModal({ isOpen, onClose, onOpenContact }: CvModalProps) {
         {/* Modal Bottom Footer Actions */}
         <div className="shrink-0 px-5 sm:px-7 py-3.5 border-t-2 border-stone-200 dark:border-zinc-800 bg-stone-50 dark:bg-zinc-900 flex flex-wrap items-center justify-between gap-3">
           <div className="text-xs text-stone-600 dark:text-zinc-400 hidden sm:block">
-            High-resolution vector PDF format • Includes live platform links
+            Original CV PDF • Includes live platform links
           </div>
 
           <div className="flex items-center gap-2.5 ml-auto">

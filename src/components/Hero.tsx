@@ -206,12 +206,22 @@ export function Hero({ onExploreProjects, onContactClick, onOpenCv }: HeroProps)
                 {onOpenCv && (
                   <div className="flex items-center justify-between pt-1 border-t border-stone-200/60 dark:border-zinc-800/60">
                     <span className="text-stone-700 dark:text-zinc-300">Curriculum Vitae</span>
-                    <button 
-                      onClick={onOpenCv}
-                      className="font-mono text-amber-700 dark:text-amber-400 hover:underline font-bold inline-flex items-center gap-1"
-                    >
-                      <span>View & Download (.PDF)</span>
-                    </button>
+                    <div className="flex items-center gap-2 font-mono font-bold">
+                      <button 
+                        onClick={onOpenCv}
+                        className="text-amber-700 dark:text-amber-400 hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>View</span>
+                      </button>
+                      <span className="text-stone-400 dark:text-zinc-600">/</span>
+                      <a
+                        href={PERSONAL_INFO.cvPdfUrl}
+                        download="Huzaifa_Bilal_CV.pdf"
+                        className="text-amber-700 dark:text-amber-400 hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>Download (.PDF)</span>
+                      </a>
+                    </div>
                   </div>
                 )}
               </div>
