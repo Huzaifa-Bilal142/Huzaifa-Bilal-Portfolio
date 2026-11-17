@@ -175,7 +175,10 @@ export function generateCvPdf() {
 
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(75, 85, 99);
-    doc.text(`${exp.company} | ${exp.location}`, margin, y);
+    const companyLine = exp.companyUrl
+      ? `${exp.company} (${exp.companyUrl}) | ${exp.location}`
+      : `${exp.company} | ${exp.location}`;
+    doc.text(companyLine, margin, y);
     y += 5;
 
     exp.achievements.forEach((r) => {

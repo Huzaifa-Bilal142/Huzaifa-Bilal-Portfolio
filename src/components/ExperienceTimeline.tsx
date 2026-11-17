@@ -2,7 +2,8 @@ import { WORK_EXPERIENCE } from '../data/portfolioData';
 import { 
   Calendar, 
   MapPin, 
-  CheckCircle2
+  CheckCircle2,
+  ExternalLink
 } from 'lucide-react';
 
 export function ExperienceTimeline() {
@@ -44,9 +45,21 @@ export function ExperienceTimeline() {
                         </span>
                       )}
                     </div>
-                    <div className="text-base font-bold text-amber-800 dark:text-amber-300 mt-0.5">
-                      {exp.company}
-                    </div>
+                    {exp.companyUrl ? (
+                      <a
+                        href={exp.companyUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-base font-bold text-amber-800 dark:text-amber-300 hover:underline mt-0.5"
+                      >
+                        <span>{exp.company}</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    ) : (
+                      <div className="text-base font-bold text-amber-800 dark:text-amber-300 mt-0.5">
+                        {exp.company}
+                      </div>
+                    )}
                   </div>
 
                   <div className="flex items-center gap-3 text-xs text-stone-800 dark:text-zinc-200 font-mono font-bold">

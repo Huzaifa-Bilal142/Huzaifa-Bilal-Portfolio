@@ -17,6 +17,7 @@ export interface WorkExperience {
   id: string;
   role: string;
   company: string;
+  companyUrl?: string;
   location: string;
   period: string;
   current?: boolean;

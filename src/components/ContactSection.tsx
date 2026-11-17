@@ -10,13 +10,18 @@ import {
   Linkedin, 
   Github, 
   Clock,
-  ExternalLink 
+  ExternalLink,
+  Loader2,
+  AlertCircle
 } from 'lucide-react';
 
 export function ContactSection() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,10 +41,57 @@ export function ContactSection() {
     setTimeout(() => setCopiedPhone(false), 2500);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const mailtoFallbackHref = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(
+    formData.subject || `Portfolio Inquiry from ${formData.name || 'Visitor'}`
+  )}&body=${encodeURIComponent(
+    `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+  )}`;
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-    setFormSubmitted(true);
+    if (honeypot) return;
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) return;
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${PERSONAL_INFO.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim() || 'General Inquiry',
+          _subject: formData.subject.trim()
+            ? `Portfolio Inquiry: ${formData.subject.trim()}`
+            : `New Portfolio Message from ${formData.name.trim()}`,
+          _replyto: formData.email.trim(),
+          _template: 'table',
+          _captcha: 'false',
+          message: formData.message.trim(),
+        }),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || (result && result.success === false)) {
+        throw new Error(result?.message || 'Could not deliver the message automatically.');
+      }
+
+      setFormSubmitted(true);
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : 'Unable to send automatically right now. Please try again or use your email app below.';
+      setSubmitError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -176,11 +228,20 @@ export function ContactSection() {
           {/* Right Form: Interactive Direct Message with Crisp Visible Text */}
           <div className="lg:col-span-7">
             <div className="premium-card p-6 sm:p-8 rounded-2xl relative border-2 border-stone-200 dark:border-zinc-800">
-              <h3 className="text-xl font-display font-bold text-stone-950 dark:text-white mb-2">
-                Send a Message
-              </h3>
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <h3 className="text-xl font-display font-bold text-stone-950 dark:text-white">
+                  Send a Message
+                </h3>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/30 text-[11px] font-mono font-semibold text-amber-800 dark:text-amber-300">
+                  <Mail className="w-3 h-3 shrink-0" />
+                  <span>To: {PERSONAL_INFO.email}</span>
+                </span>
+              </div>
               <p className="text-xs sm:text-sm font-medium text-stone-700 dark:text-zinc-200 mb-6">
-                Have an enterprise web project, custom WordPress CMS requirement, or engineering contract? Let's discuss requirements and timelines.
+                Have an enterprise web project, custom WordPress CMS requirement, or engineering contract? Messages submitted here are sent directly to{' '}
+                <a href={`mailto:${PERSONAL_INFO.email}`} className="font-mono font-semibold text-amber-800 dark:text-amber-300 hover:underline">
+                  {PERSONAL_INFO.email}
+                </a>.
               </p>
 
               {formSubmitted ? (
@@ -191,12 +252,14 @@ export function ContactSection() {
                   <h4 className="font-display font-bold text-stone-950 dark:text-white text-lg">
                     Message Sent Successfully!
                   </h4>
-                  <p className="text-xs sm:text-sm text-stone-800 dark:text-zinc-200 max-w-sm mx-auto font-medium">
-                    Thank you, {formData.name}. I have received your message and will respond promptly within 24 hours.
+                  <p className="text-xs sm:text-sm text-stone-800 dark:text-zinc-200 max-w-md mx-auto font-medium">
+                    Thank you, {formData.name}. Your inquiry has been sent to{' '}
+                    <span className="font-mono font-bold">{PERSONAL_INFO.email}</span> and I will respond promptly within 24 hours.
                   </p>
                   <button
                     onClick={() => {
                       setFormSubmitted(false);
+                      setSubmitError(null);
                       setFormData({ name: '', email: '', subject: '', message: '' });
                     }}
                     className="px-4 py-2 rounded-xl text-xs font-bold bg-stone-950 text-white dark:bg-zinc-100 dark:text-zinc-950"
@@ -206,6 +269,18 @@ export function ContactSection() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Anti-spam honeypot field */}
+                  <input
+                    type="text"
+                    name="_honey"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    aria-hidden="true"
+                  />
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-mono font-bold text-stone-800 dark:text-zinc-200 mb-1.5 uppercase">
@@ -213,11 +288,13 @@ export function ContactSection() {
                       </label>
                       <input
                         type="text"
+                        name="name"
                         required
+                        disabled={isSubmitting}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Alex van Dijk"
-                        className="w-full px-4 py-2.5 rounded-xl text-sm font-medium bg-white dark:bg-zinc-900 border-2 border-stone-300 dark:border-zinc-700 text-stone-950 dark:text-white placeholder:text-stone-500 dark:placeholder:text-zinc-400 focus:outline-none focus:border-amber-600"
+                        className="w-full px-4 py-2.5 rounded-xl text-sm font-medium bg-white dark:bg-zinc-900 border-2 border-stone-300 dark:border-zinc-700 text-stone-950 dark:text-white placeholder:text-stone-500 dark:placeholder:text-zinc-400 focus:outline-none focus:border-amber-600 disabled:opacity-60"
                       />
                     </div>
 
@@ -227,11 +304,13 @@ export function ContactSection() {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         required
+                        disabled={isSubmitting}
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.g. alex@company.nl"
-                        className="w-full px-4 py-2.5 rounded-xl text-sm font-medium bg-white dark:bg-zinc-900 border-2 border-stone-300 dark:border-zinc-700 text-stone-950 dark:text-white placeholder:text-stone-500 dark:placeholder:text-zinc-400 focus:outline-none focus:border-amber-600"
+                        className="w-full px-4 py-2.5 rounded-xl text-sm font-medium bg-white dark:bg-zinc-900 border-2 border-stone-300 dark:border-zinc-700 text-stone-950 dark:text-white placeholder:text-stone-500 dark:placeholder:text-zinc-400 focus:outline-none focus:border-amber-600 disabled:opacity-60"
                       />
                     </div>
                   </div>
@@ -242,10 +321,12 @@ export function ContactSection() {
                     </label>
                     <input
                       type="text"
+                      name="subject"
+                      disabled={isSubmitting}
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="e.g. Custom WordPress E-commerce platform / Web application"
-                      className="w-full px-4 py-2.5 rounded-xl text-sm font-medium bg-white dark:bg-zinc-900 border-2 border-stone-300 dark:border-zinc-700 text-stone-950 dark:text-white placeholder:text-stone-500 dark:placeholder:text-zinc-400 focus:outline-none focus:border-amber-600"
+                      className="w-full px-4 py-2.5 rounded-xl text-sm font-medium bg-white dark:bg-zinc-900 border-2 border-stone-300 dark:border-zinc-700 text-stone-950 dark:text-white placeholder:text-stone-500 dark:placeholder:text-zinc-400 focus:outline-none focus:border-amber-600 disabled:opacity-60"
                     />
                   </div>
 
@@ -254,26 +335,54 @@ export function ContactSection() {
                       Message *
                     </label>
                     <textarea
+                      name="message"
                       required
+                      disabled={isSubmitting}
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Tell me about your goals, architectural requirements, or schedule..."
-                      className="w-full px-4 py-2.5 rounded-xl text-sm font-medium bg-white dark:bg-zinc-900 border-2 border-stone-300 dark:border-zinc-700 text-stone-950 dark:text-white placeholder:text-stone-500 dark:placeholder:text-zinc-400 focus:outline-none focus:border-amber-600 resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl text-sm font-medium bg-white dark:bg-zinc-900 border-2 border-stone-300 dark:border-zinc-700 text-stone-950 dark:text-white placeholder:text-stone-500 dark:placeholder:text-zinc-400 focus:outline-none focus:border-amber-600 resize-none disabled:opacity-60"
                     />
                   </div>
 
-                  <div className="flex items-center justify-between pt-2">
+                  {submitError && (
+                    <div className="p-3.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-300 dark:border-red-800 text-xs text-red-900 dark:text-red-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      <div className="flex items-start gap-2">
+                        <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
+                        <span>{submitError}</span>
+                      </div>
+                      <a
+                        href={mailtoFallbackHref}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold shrink-0 self-start sm:self-auto"
+                      >
+                        <Mail className="w-3.5 h-3.5" />
+                        <span>Send via Email App</span>
+                      </a>
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
                     <span className="text-xs font-medium text-stone-700 dark:text-zinc-300">
                       Guaranteed reply within 24 hours.
                     </span>
 
                     <button
                       type="submit"
-                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-stone-950 hover:bg-stone-800 dark:bg-zinc-100 dark:hover:bg-white text-white dark:text-zinc-950 font-bold text-xs sm:text-sm shadow-xs transition-all hover:scale-[1.01]"
+                      disabled={isSubmitting}
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-stone-950 hover:bg-stone-800 dark:bg-zinc-100 dark:hover:bg-white text-white dark:text-zinc-950 font-bold text-xs sm:text-sm shadow-xs transition-all hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      <span>Send Message</span>
-                      <Send className="w-3.5 h-3.5" />
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Send Message</span>
+                          <Send className="w-3.5 h-3.5" />
+                        </>
+                      )}
                     </button>
                   </div>
                 </form>

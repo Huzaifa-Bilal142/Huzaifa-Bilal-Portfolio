@@ -8,7 +8,8 @@ import {
   MessageSquare, 
   Briefcase, 
   Award,
-  FileText
+  FileText,
+  ExternalLink
 } from 'lucide-react';
 
 interface HeroProps {
@@ -140,7 +141,17 @@ export function Hero({ onExploreProjects, onContactClick, onOpenCv }: HeroProps)
                     <Briefcase className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-stone-950 dark:text-white">WanneerOnline Developer</h4>
+                    <h4 className="font-bold text-stone-950 dark:text-white">
+                      <a
+                        href="https://www.wmc-media.nl/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 hover:text-amber-700 dark:hover:text-amber-300 hover:underline transition-colors"
+                      >
+                        <span>WMC Media Developer</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </h4>
                     <p className="text-xs text-stone-700 dark:text-zinc-300 font-medium">
                       Engineered Dutch corporate & e-commerce platforms (Netherlands remote).
                     </p>

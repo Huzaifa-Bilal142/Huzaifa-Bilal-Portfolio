@@ -242,9 +242,10 @@ export const PROJECTS_DATA: Project[] = [
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
-    id: 'wanneeronline',
+    id: 'wmc-media',
     role: 'WordPress Developer & CMS Architect',
-    company: 'WanneerOnline',
+    company: 'WMC Media',
+    companyUrl: 'https://www.wmc-media.nl/',
     location: 'Remote, Netherlands',
     period: 'Jan 2026 to Oct 2026',
     current: false,

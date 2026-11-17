@@ -34,7 +34,7 @@ export function AboutSection() {
                 I am a Software Engineer with robust professional experience in modern web development, specializing in advanced WordPress architecture and Artificial Intelligence. My background encompasses architecting custom CMS frameworks, including WooCommerce, Elementor, Advanced Custom Fields (ACF Pro), and JetEngine, alongside building intelligent, data-driven digital solutions.
               </p>
               <p className="text-stone-800 dark:text-zinc-200 leading-relaxed text-sm sm:text-base">
-                Most recently, I engineered customized corporate and e-commerce platforms at <strong className="text-stone-950 dark:text-white font-bold">WanneerOnline</strong> for clients across the Netherlands and Europe. I take pride in developing custom PHP filters, scalable database models, and high-performance front-end interfaces that score high on technical SEO and Core Web Vitals benchmarks.
+                Most recently, I engineered customized corporate and e-commerce platforms at <a href="https://www.wmc-media.nl/" target="_blank" rel="noreferrer" className="font-bold text-stone-950 dark:text-white underline decoration-amber-600/60 hover:text-amber-700 dark:hover:text-amber-300 transition-colors inline-flex items-center gap-1">WMC Media<ExternalLink className="w-3.5 h-3.5 inline" /></a> for clients across the Netherlands and Europe. I take pride in developing custom PHP filters, scalable database models, and high-performance front-end interfaces that score high on technical SEO and Core Web Vitals benchmarks.
               </p>
 
               {/* Core Philosophy points */}

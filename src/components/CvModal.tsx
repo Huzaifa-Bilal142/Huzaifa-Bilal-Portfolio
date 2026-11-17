@@ -234,8 +234,20 @@ export function CvModal({ isOpen, onClose, onOpenContact }: CvModalProps) {
                     </span>
                   </div>
 
-                  <div className="text-xs font-semibold text-stone-700 dark:text-zinc-300 mb-3 flex items-center gap-2">
-                    <span>{exp.company}</span>
+                  <div className="text-xs font-semibold text-stone-700 dark:text-zinc-300 mb-3 flex items-center gap-2 flex-wrap">
+                    {exp.companyUrl ? (
+                      <a
+                        href={exp.companyUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 text-amber-700 dark:text-amber-400 hover:underline font-bold"
+                      >
+                        <span>{exp.company}</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    ) : (
+                      <span>{exp.company}</span>
+                    )}
                     <span>•</span>
                     <span className="font-mono">{exp.location}</span>
                   </div>
