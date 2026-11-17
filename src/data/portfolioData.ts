@@ -18,7 +18,7 @@ export const PERSONAL_INFO = {
 export const PROJECTS_DATA: Project[] = [
   {
     id: 'auctify',
-    title: 'Auctify – Online Auction Web Application',
+    title: 'Auctify: Online Auction Web Application',
     subtitle: 'Full-Stack Real-Time Bidding & Commerce Engine',
     category: 'Full-Stack',
     featured: true,
@@ -48,7 +48,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://bio.wmcdev.nl/',
     tags: ['WordPress', 'Advanced Custom Fields', 'Tailwind/CSS', 'News Feeds', 'Responsive UI'],
-    dateRange: 'Aug 2026 – Sep 2026'
+    dateRange: 'Aug 2026 to Sep 2026'
   },
   {
     id: 'top-of-the-world',
@@ -65,7 +65,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://faith.wmcdev.nl/',
     tags: ['WordPress', 'Custom Layouts', 'CSS3 Architecture', 'Brand UI', 'Performance'],
-    dateRange: 'Aug 2026 – Sep 2026'
+    dateRange: 'Aug 2026 to Sep 2026'
   },
   {
     id: 'laksbouw',
@@ -82,7 +82,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://laksbouw.wmcdev.nl/',
     tags: ['WordPress', 'Custom CSS', 'Corporate CMS', 'Responsive Grid'],
-    dateRange: 'Aug 2026 – Sep 2026'
+    dateRange: 'Aug 2026 to Sep 2026'
   },
   {
     id: 'vetkanalen',
@@ -100,7 +100,7 @@ export const PROJECTS_DATA: Project[] = [
     liveUrl: 'https://veilig.wmcdev.nl/',
     secondaryUrl: 'https://vetkanalenreinigen.com/',
     tags: ['WordPress', 'Quotation Engine', 'Technical SEO', 'B2B Workflows', 'PHP'],
-    dateRange: 'Aug 2026 – Sep 2026'
+    dateRange: 'Aug 2026 to Sep 2026'
   },
   {
     id: 'swom',
@@ -117,7 +117,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://swom.wmcdev.nl/',
     tags: ['Elementor', 'Accessibility (WCAG)', 'Custom Widgets', 'Social Impact'],
-    dateRange: 'Jul 2026 – Aug 2026'
+    dateRange: 'Jul 2026 to Aug 2026'
   },
   {
     id: 'massage-koning',
@@ -134,7 +134,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://massage.wmcdev.nl/',
     tags: ['WooCommerce', 'E-Commerce', 'Payment Gateways', 'PHP Filters', 'Conversion Rate'],
-    dateRange: 'Jul 2026 – Aug 2026'
+    dateRange: 'Jul 2026 to Aug 2026'
   },
   {
     id: 'maison-pure',
@@ -151,7 +151,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://masion.wmcdev.nl/',
     tags: ['WordPress', 'Real Estate CMS', 'Custom Filtering', 'Typography', 'Lead Gen'],
-    dateRange: 'Jul 2026 – Aug 2026'
+    dateRange: 'Jul 2026 to Aug 2026'
   },
   {
     id: 'kat-cms',
@@ -168,7 +168,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://katdeau.nl/',
     tags: ['JetEngine', 'Advanced ACF', 'Custom Post Types', 'Taxonomies', 'PHP'],
-    dateRange: 'May 2026 – Jun 2026'
+    dateRange: 'May 2026 to Jun 2026'
   },
   {
     id: 'arcavest',
@@ -185,7 +185,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://arcavest.wmcdev.nl/',
     tags: ['Rank Math SEO', 'Technical Audits', 'Core Web Vitals', 'Responsive CSS', 'Schema.org'],
-    dateRange: 'Mar 2026 – Apr 2026'
+    dateRange: 'Mar 2026 to Apr 2026'
   },
   {
     id: 'rs-bandenservice',
@@ -202,7 +202,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://rsbandenservice.wmcdev.nl/',
     tags: ['WordPress', 'ACF Pro', 'Dynamic Pricing', 'Automotive Services', 'Mobile First'],
-    dateRange: 'Jan 2026 – Apr 2026'
+    dateRange: 'Jan 2026 to Apr 2026'
   },
   {
     id: 'waiserr',
@@ -219,7 +219,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://waiserr.nl/',
     tags: ['WordPress', 'Caching Optimization', 'CSS Refinement', 'Corporate Branding'],
-    dateRange: 'Sep 2025 – Nov 2025'
+    dateRange: 'Sep 2025 to Nov 2025'
   },
   {
     id: '4x4-rock-cats',
@@ -236,7 +236,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     liveUrl: 'https://4x4rockcats.com/',
     tags: ['WooCommerce', 'Custom PHP Hooks', 'Database Architecture', 'Community Portal'],
-    dateRange: 'Aug 2025 – Dec 2025'
+    dateRange: 'Aug 2025 to Dec 2025'
   }
 ];
 
@@ -246,14 +246,14 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     role: 'WordPress Developer & CMS Architect',
     company: 'WanneerOnline',
     location: 'Remote, Netherlands',
-    period: 'Jan 2026 – Present',
-    current: true,
-    description: 'Engineering and maintaining high-performance e-commerce and corporate web platforms for Dutch and European clients within the WordPress ecosystem.',
+    period: 'Jan 2026 to Oct 2026',
+    current: false,
+    description: 'Engineered and maintained high-performance e-commerce and corporate web platforms for Dutch and European clients within the WordPress ecosystem.',
     achievements: [
-      'Engineer customized e-commerce and corporate web solutions (including client platforms like babyfoonspecialist.nl, vanzantenkunstgras.nl, and regional portals) using WordPress, Elementor, ACF, and JetEngine.',
-      'Manage end-to-end technical SEO audits, commercial keyword mapping, and optimization strategies using Rank Math to drive organic visibility and ranking.',
-      'Develop custom PHP filters, actions, and advanced CSS configurations to deliver highly responsive, cross-platform layouts and robust digital interfaces.',
-      'Collaborate remotely with international stakeholders, ensuring rapid sprint turnaround and 99.9% uptime compliance.'
+      'Engineered customized e-commerce and corporate web solutions (including client platforms like babyfoonspecialist.nl, vanzantenkunstgras.nl, and regional portals) using WordPress, Elementor, ACF, and JetEngine.',
+      'Managed end-to-end technical SEO audits, commercial keyword mapping, and optimization strategies using Rank Math to drive organic visibility and ranking.',
+      'Developed custom PHP filters, actions, and advanced CSS configurations to deliver highly responsive, cross-platform layouts and robust digital interfaces.',
+      'Collaborated remotely with international stakeholders, ensuring rapid sprint turnaround and 99.9% uptime compliance.'
     ],
     technologies: ['WordPress', 'WooCommerce', 'PHP', 'ACF Pro', 'JetEngine', 'Rank Math SEO', 'Elementor', 'Tailwind/CSS'],
     highlightProjects: ['babyfoonspecialist.nl', 'vanzantenkunstgras.nl', 'veilig.wmcdev.nl']
@@ -263,7 +263,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     role: 'WordPress Developer',
     company: 'Rank Divine',
     location: 'Sargodha, Pakistan',
-    period: 'Aug 2025 – Jan 2026',
+    period: 'Aug 2025 to Jan 2026',
     current: false,
     description: 'Developed dynamic, responsive WordPress websites, translating agency client requirements into scalable and efficient web architectures.',
     achievements: [
@@ -282,10 +282,10 @@ export const EDUCATION: EducationItem[] = [
     degree: 'B.Sc. Software Engineering',
     institution: 'University of Sargodha (UOS)',
     location: 'Sargodha, Pakistan',
-    period: 'Dec 2022 – Jun 2026',
+    period: 'Dec 2022 to Jun 2026',
     grade: 'CGPA: 3.32 / 4.00 (82.16%)',
     finalProject: {
-      title: 'Auctify – Online Auction Web Application',
+      title: 'Auctify: Online Auction Web Application',
       description: 'A full-stack e-commerce auction platform built to facilitate live concurrent bidding, secure user authentication, and seamless inventory management.',
       liveUrl: 'https://auctify-mu.vercel.app/',
       highlights: [

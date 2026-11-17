@@ -31,10 +31,10 @@ export function AboutSection() {
                 Software Engineer with deep CMS & AI expertise
               </h3>
               <p className="text-stone-800 dark:text-zinc-200 leading-relaxed text-sm sm:text-base">
-                I am a Software Engineer with robust professional experience in modern web development, specializing in advanced WordPress architecture and Artificial Intelligence. My background encompasses architecting custom CMS frameworks—including WooCommerce, Elementor, Advanced Custom Fields (ACF Pro), and JetEngine—alongside building intelligent, data-driven digital solutions.
+                I am a Software Engineer with robust professional experience in modern web development, specializing in advanced WordPress architecture and Artificial Intelligence. My background encompasses architecting custom CMS frameworks, including WooCommerce, Elementor, Advanced Custom Fields (ACF Pro), and JetEngine, alongside building intelligent, data-driven digital solutions.
               </p>
               <p className="text-stone-800 dark:text-zinc-200 leading-relaxed text-sm sm:text-base">
-                Currently, I engineer customized corporate and e-commerce platforms at <strong className="text-stone-950 dark:text-white font-bold">WanneerOnline</strong> for clients across the Netherlands and Europe. I take pride in developing custom PHP filters, scalable database models, and high-performance front-end interfaces that score high on technical SEO and Core Web Vitals benchmarks.
+                Most recently, I engineered customized corporate and e-commerce platforms at <strong className="text-stone-950 dark:text-white font-bold">WanneerOnline</strong> for clients across the Netherlands and Europe. I take pride in developing custom PHP filters, scalable database models, and high-performance front-end interfaces that score high on technical SEO and Core Web Vitals benchmarks.
               </p>
 
               {/* Core Philosophy points */}
@@ -111,7 +111,7 @@ export function AboutSection() {
               <div className="space-y-2.5 text-xs text-stone-800 dark:text-zinc-200 font-medium">
                 <div className="flex justify-between py-1.5 border-b border-stone-200 dark:border-zinc-800">
                   <span className="text-stone-700 dark:text-zinc-300">Duration</span>
-                  <span className="font-mono font-bold text-stone-950 dark:text-white">Dec 2022 – Jun 2026</span>
+                  <span className="font-mono font-bold text-stone-950 dark:text-white">Dec 2022 to Jun 2026</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-stone-200 dark:border-zinc-800">
                   <span className="text-stone-700 dark:text-zinc-300">Academic Standing</span>

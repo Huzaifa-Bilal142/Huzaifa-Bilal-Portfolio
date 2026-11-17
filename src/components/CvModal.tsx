@@ -456,7 +456,7 @@ export function CvModal({ isOpen, onClose, onOpenContact }: CvModalProps) {
             </div>
 
             <span className="text-[11px] font-mono text-stone-600 dark:text-zinc-400">
-              Last updated: September 2026
+              Last updated: November 2026
             </span>
           </div>
         </div>

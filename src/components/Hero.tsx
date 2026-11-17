@@ -129,7 +129,7 @@ export function Hero({ onExploreProjects, onContactClick, onOpenCv }: HeroProps)
                   </span>
                 </div>
                 <span className="text-xs font-mono text-amber-800 dark:text-amber-300 font-bold">
-                  UOS 2022–2026
+                  UOS 2022 to 2026
                 </span>
               </div>
 
@@ -142,7 +142,7 @@ export function Hero({ onExploreProjects, onContactClick, onOpenCv }: HeroProps)
                   <div>
                     <h4 className="font-bold text-stone-950 dark:text-white">WanneerOnline Developer</h4>
                     <p className="text-xs text-stone-700 dark:text-zinc-300 font-medium">
-                      Engineering Dutch corporate & e-commerce platforms (Netherlands remote).
+                      Engineered Dutch corporate & e-commerce platforms (Netherlands remote).
                     </p>
                   </div>
                 </div>
